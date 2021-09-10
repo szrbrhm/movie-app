@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
-
+// import { useHistory } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+// import { signOut } from "../auth/firebase";
 const Navbar = () => {
-  const history = useHistory();
-  const currentUser = null;
-  
+  // const history = useHistory();
+  const { currentUser } = useContext(AuthContext);
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/" style={{ color: "white" }}>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/" style={{ color: "white" }}>
             React Movie App
           </a>
           <div className="buttons">
@@ -18,26 +18,25 @@ const Navbar = () => {
             ) : (
               <button
                 type="button"
-                class="ms-2 btn btn-outline-light"
-                onClick={() => history.push("/login")}
+                className="ms-2 btn btn-outline-light"
+                // onClick={() => history.push("/login")}
               >
                 Login
               </button>
             )}
-
             {currentUser ? (
               <button
                 type="button"
-                class="ms-2 btn btn-outline-light"
-                onClick={() => null}
+                className="ms-2 btn btn-outline-light"
+                // onClick={() => signOut()}
               >
                 Logout
               </button>
             ) : (
               <button
                 type="button"
-                class="ms-2 btn btn-outline-light"
-                onClick={() => history.push("/register")}
+                className="ms-2 btn btn-outline-light"
+                // onClick={() => history.push("/register")}
               >
                 Register
               </button>
@@ -48,5 +47,4 @@ const Navbar = () => {
     </div>
   );
 };
-
 export default Navbar;
